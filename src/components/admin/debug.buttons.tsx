@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { logout } from '@/server/actions/auth/logout';
-import { getEmployees } from '@/server/actions/users/getUsers';
+import { getEmployees } from '@/server/actions/users/getEmployees';
 import { ShieldEllipsis } from 'lucide-react';
 import useLocalStorageState from 'use-local-storage-state';
 import { SideBarButton } from '../layout/SideBarButton';

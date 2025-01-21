@@ -11,7 +11,7 @@ export function ErrorComponent({
   description = 'Something went wrong',
 }: ErrorComponentProps) {
   return (
-    <div>
+    <div className="p-4">
       <h3>{title}</h3>
       <p>{description}</p>
     </div>
