@@ -4,7 +4,7 @@ import { index, timestamp, uuid, varchar } from 'drizzle-orm/pg-core';
 import { position } from './position.entity';
 
 export const employee = schema.table(
-  'employee',
+  'employees',
   {
     id: uuid().defaultRandom().primaryKey(),
     fio: varchar().notNull(),

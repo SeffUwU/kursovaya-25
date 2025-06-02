@@ -16,7 +16,7 @@ export const employeeFixture: WithoutGenerated<IEmployee>[] = [
     address: randFullAddress(),
     dob: randRecentDate(),
     passport: `340-40-40. МВД. Ставропольский Край`,
-    phone: randPhoneNumber(),
+    phone: '+79054431272',
     passwordHash: await bcrypt.hash('1', 10),
     positionId: adminId,
   },

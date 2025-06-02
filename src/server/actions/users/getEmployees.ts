@@ -9,8 +9,7 @@ import { ActionResponse } from '@/helpers/responses/response.type';
 import { omitFields } from '@/helpers/transform/omit';
 import { db } from '@/server/database';
 import { TokenPayload } from '@/types/jwt/token.payload.type';
-import { eq, like, sql } from 'drizzle-orm';
-import { lower } from 'drizzle-orm';
+import { eq, sql } from 'drizzle-orm';
 
 /**
  * Get users. With pagination. Self explanatory.
@@ -30,7 +29,6 @@ export const getEmployees = protect(
       .offset(Math.max(options.page - 1, 0) * options.take)
       .limit(options.take);
 
-    console.log(options.query);
     if (options.query) {
       if (options.type === 'position') {
         query.where(sql`${position.name} ILIKE ${`%${options.query}%`}`);
@@ -40,7 +38,7 @@ export const getEmployees = protect(
     }
 
     const foundUsers = (await query.execute()).map((v) => ({
-      ...omitFields(v.employee, ['passwordHash']),
+      ...omitFields(v.employees, ['passwordHash']),
       position: v.positions!,
     }));
 

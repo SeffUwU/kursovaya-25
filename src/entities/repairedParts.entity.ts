@@ -1,7 +1,7 @@
 import { schema } from '@/entities/schema';
 import { relations } from 'drizzle-orm';
 import { index, integer, uuid } from 'drizzle-orm/pg-core';
-import { malfunction } from './invoice.entity';
+import { invoice } from './invoice.entity';
 import { part } from './parts.entity';
 
 export const repairedParts = schema.table(
@@ -12,7 +12,7 @@ export const repairedParts = schema.table(
       .references(() => part.id, { onDelete: 'cascade' })
       .notNull(),
     malfunctionId: uuid()
-      .references(() => malfunction.id, { onDelete: 'cascade' })
+      .references(() => invoice.id, { onDelete: 'cascade' })
       .notNull(),
     amount: integer().default(1),
   },
@@ -21,7 +21,7 @@ export const repairedParts = schema.table(
 
 export const repairedPartsRelations = relations(repairedParts, ({ one }) => ({
   part: one(part, { fields: [repairedParts.partId], references: [part.id] }),
-  invoice: one(malfunction, { fields: [repairedParts.malfunctionId], references: [malfunction.id] }),
+  invoice: one(invoice, { fields: [repairedParts.malfunctionId], references: [invoice.id] }),
 }));
 
 export type IRepairedPart = typeof repairedParts.$inferSelect;

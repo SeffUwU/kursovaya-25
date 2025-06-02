@@ -10,7 +10,7 @@ import { redirect } from 'next/navigation';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'DnD Tracker',
+  title: 'Service Center Generic ITO',
 };
 
 const geistSans = localFont({

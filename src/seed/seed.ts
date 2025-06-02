@@ -1,8 +1,9 @@
-import { employee, position } from '@/entities';
+import { employee, part, position } from '@/entities';
 import { db } from '@/server/database';
 import chalk from 'chalk';
 import { positionFixture } from './fixtures/fixture-position';
 import { employeeFixture } from './fixtures/fixture-employees';
+import { partsFixture } from './fixtures/fixture-parts';
 
 const seed = async () => {
   // Positions
@@ -10,6 +11,10 @@ const seed = async () => {
 
   // Employees
   await db.insert(employee).values(employeeFixture).execute();
+
+  // Parts
+
+  await db.insert(part).values(partsFixture).execute();
 };
 
 seed()

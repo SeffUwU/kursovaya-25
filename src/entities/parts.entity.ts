@@ -4,7 +4,7 @@ import { index, integer, timestamp, uuid, varchar } from 'drizzle-orm/pg-core';
 import { repairedParts } from './repairedParts.entity';
 
 export const part = schema.table(
-  'orders',
+  'parts',
   {
     id: uuid().defaultRandom().primaryKey(),
     name: varchar().notNull(),

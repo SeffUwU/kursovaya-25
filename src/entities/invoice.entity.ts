@@ -4,8 +4,8 @@ import { index, integer, timestamp, uuid, varchar } from 'drizzle-orm/pg-core';
 import { repairedDevice } from './repairedDevice.entity';
 import { repairedParts } from './repairedParts.entity';
 
-export const malfunction = schema.table(
-  'malfunctions',
+export const invoice = schema.table(
+  'invoices',
   {
     id: uuid().defaultRandom().primaryKey(),
     repairedDeviceId: uuid()
@@ -23,8 +23,8 @@ export const malfunction = schema.table(
   (t) => [index('invoice_id_pkey').on(t.id)],
 );
 
-export const malfunctionRelations = relations(malfunction, ({ many }) => ({
+export const invoiceRelations = relations(invoice, ({ many }) => ({
   repairedParts: many(repairedParts),
 }));
 
-export type IMalfunction = typeof malfunction.$inferSelect;
+export type IInvoice = typeof invoice.$inferSelect;
