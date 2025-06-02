@@ -15,6 +15,7 @@ export const getEmployeeInfo = protect(async (_, employeeId: string) => {
     .from(employee)
     .leftJoin(position, eq(position.id, employee.positionId))
     .where(eq(employee.id, employeeId))
+    .limit(1)
     .execute();
 
   if (!foundEmployee[0]) {

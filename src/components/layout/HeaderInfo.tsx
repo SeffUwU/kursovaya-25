@@ -1,8 +1,9 @@
 import type { Nullable } from '@/types/utils/utils.types';
-import { House, Users } from 'lucide-react';
+import { House, Users, Bolt } from 'lucide-react';
 
 const typeToIconMap = {
   employee: Users,
+  part: Bolt,
 };
 
 interface HeaderInfoProps {

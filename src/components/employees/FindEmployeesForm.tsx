@@ -1,12 +1,17 @@
 'use client';
 
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Input } from '../ui/input';
-import { usePathname, useRouter } from 'next/navigation';
 
-export function FindEmployeeForm() {
+interface ModuleSearchBarProps {
+  filter: { value: string; name: string }[];
+  defaultFilter: string;
+}
+
+export function ModuleSearchBar(props: ModuleSearchBarProps) {
   const [query, setQuery] = useState('');
-  const [select, setSelect] = useState('position');
+  const [select, setSelect] = useState(props.defaultFilter);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -32,9 +37,11 @@ export function FindEmployeeForm() {
       <Input value={query} onChange={(e) => setQuery(e.target.value)} className="max-w-xl" />
       <span>ПО:</span>
       <select className="p-2 rounded-md bg-gray-100" value={select} onChange={(e) => setSelect(e.target.value)}>
-        <option value="fio">ФИО</option>
-        <option value="phone">Телефону</option>
-        <option value="position">Должности</option>
+        {props.filter.map(({ name, value }) => (
+          <option key={value} value={value}>
+            {name}
+          </option>
+        ))}
       </select>
     </div>
   );
