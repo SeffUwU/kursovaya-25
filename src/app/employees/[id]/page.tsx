@@ -11,7 +11,7 @@ export default async function UserPage({ params }: { params: Promise<{ id: strin
     return <ErrorComponent code={ErrorCode.EmployeeNotFound} title="Сотрудник не найден" />;
   }
 
-  const employee = employeeInfo.value.employee;
+  const employee = employeeInfo.value.employees;
   const position = employeeInfo.value.positions!;
 
   return (

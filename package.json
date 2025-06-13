@@ -11,7 +11,9 @@
     "drizzle:generate": "npx drizzle-kit generate --name",
     "drizzle:migrate": "npx drizzle-kit migrate",
     "drizzle:seed": "npx tsx ./src/seed/seed.ts",
-    "drizzle:drop": "npx tsx ./src/seed/drop.ts"
+    "drizzle:drop": "npx tsx ./src/seed/drop.ts",
+    "docker:dev": "docker compose -f docker-compose.dev.yml up --build",
+    "docker:prod": "docker compose -f docker-compose.prod.yml up -d"
   },
   "dependencies": {
     "@paralleldrive/cuid2": "^2.2.2",

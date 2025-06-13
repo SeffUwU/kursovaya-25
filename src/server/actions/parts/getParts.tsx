@@ -35,6 +35,7 @@ export const getParts = protect(
         query.where(sql`${part.varchar} ILIKE ${`%${options.query}%`}`);
       }
     }
+
     const foundParts = await query.execute();
 
     return ServerActionResponse(HttpStatusCode.Ok, foundParts);

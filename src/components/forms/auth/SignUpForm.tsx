@@ -18,7 +18,7 @@ export default function SignUpForm() {
   const t = getDictionary();
 
   const register = async () => {
-    const response = await signup({ login, password });
+    const response = await signup({ login, password, address: 'TODO', fio: 'TODO', passport: '123', positionId: '1' });
 
     if (response.is_error) {
       toast({

@@ -36,7 +36,11 @@ export function ModuleSearchBar(props: ModuleSearchBarProps) {
       <span>Поиск </span>
       <Input value={query} onChange={(e) => setQuery(e.target.value)} className="max-w-xl" />
       <span>ПО:</span>
-      <select className="p-2 rounded-md bg-gray-100" value={select} onChange={(e) => setSelect(e.target.value)}>
+      <select
+        className="p-2 rounded-md bg-gray-100 dark:bg-slate-800"
+        value={select}
+        onChange={(e) => setSelect(e.target.value)}
+      >
         {props.filter.map(({ name, value }) => (
           <option key={value} value={value}>
             {name}

@@ -6,4 +6,5 @@ export const RussianErrorMessages: Record<ErrorCode, string> = {
   [ErrorCode.TokenExpired]: 'Сессия устарела',
   [ErrorCode.EmployeeNotFound]: 'Пользователь не найден',
   [ErrorCode.InternalServerError]: 'Произошла серверная ошибка. Свяжитесь с НАМИ если это будет продолжаться.',
+  [ErrorCode.PartNotFound]: 'Компонент не найден',
 };

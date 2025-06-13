@@ -60,7 +60,7 @@ export function Sidebar() {
         }}
       >
         <div className="flex flex-col px-2 gap-2 w-full pt-2">
-          <Link href={'/'} className="w-full flex items-center justify-center text-blue-800 hover:text-blue-400">
+          <Link href={'/'} className="w-full flex items-center justify-center text-orange-400 hover:text-blue-400">
             <Cog className="" />
           </Link>
 

@@ -26,7 +26,7 @@ export function SideBarButton({
     <TooltipMessage message={title} disabled={expanded} side="right">
       <Button
         variant="ghost"
-        className={cn(className, 'text-ellipsis overflow-hidden', {
+        className={cn(className, 'text-ellipsis overflow-hidden text-black dark:text-white', {
           'bg-blue-200 dark:bg-blue-800': isActive,
         })}
         onClick={onClick}
