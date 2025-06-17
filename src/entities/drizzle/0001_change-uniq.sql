@@ -1,0 +1,1 @@
+ALTER TABLE "scSchema"."repaired_devices" DROP CONSTRAINT "repaired_devices_type_unique";

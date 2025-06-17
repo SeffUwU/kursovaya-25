@@ -7,7 +7,7 @@ export const repairedDevice = schema.table(
   {
     id: uuid().defaultRandom().primaryKey(),
     name: varchar().notNull(),
-    type: varchar().notNull().unique(),
+    type: varchar().notNull(),
     manufacturer: varchar().notNull(),
     characteristics: varchar().notNull(),
     details: varchar().notNull(),
