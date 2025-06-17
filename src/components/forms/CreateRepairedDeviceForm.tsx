@@ -1,7 +1,7 @@
 'use client';
 
 import { ModularFormField, ModularFormFieldType } from './CreateForm/create-form-types';
-import { ModularCreateForm } from './CreateForm/CreateForm';
+import { ModularForm } from './CreateForm/ModularForm';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createRepairedDevice } from '@/server/actions/repaired-devices/createRepairedDevice';
@@ -72,7 +72,7 @@ export function CreateRepairedDeviceForm() {
 
   return (
     <>
-      <ModularCreateForm
+      <ModularForm
         fields={fields}
         formData={formData}
         onFormDataChange={setFormData}

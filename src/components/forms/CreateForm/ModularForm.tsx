@@ -18,7 +18,7 @@ export interface ModularCreateFormProps {
   onSubmit: () => void;
 }
 
-export function ModularCreateForm({
+export function ModularForm({
   fields,
   formData,
   onFormDataChange,

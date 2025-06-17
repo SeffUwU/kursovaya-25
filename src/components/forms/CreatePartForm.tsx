@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { ModularFormField, ModularFormFieldType } from './CreateForm/create-form-types';
-import { ModularCreateForm } from './CreateForm/CreateForm';
+import { ModularForm } from './CreateForm/ModularForm';
 import { createPart } from '@/server/actions/parts/createPart';
 
 export function CreateRepairedPart() {
@@ -55,7 +55,7 @@ export function CreateRepairedPart() {
 
   return (
     <>
-      <ModularCreateForm
+      <ModularForm
         fields={fields}
         formData={formData}
         onFormDataChange={setFormData}

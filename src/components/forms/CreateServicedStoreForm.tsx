@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { ModularFormField, ModularFormFieldType } from './CreateForm/create-form-types';
-import { ModularCreateForm } from './CreateForm/CreateForm';
+import { ModularForm } from './CreateForm/ModularForm';
 import { createStore } from '@/server/actions/stores/createStore';
 
 export function CreateServicedStore() {
@@ -55,7 +55,7 @@ export function CreateServicedStore() {
 
   return (
     <>
-      <ModularCreateForm
+      <ModularForm
         fields={fields}
         formData={formData}
         onFormDataChange={setFormData}
