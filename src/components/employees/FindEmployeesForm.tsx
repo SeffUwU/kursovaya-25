@@ -32,7 +32,7 @@ export function ModuleSearchBar(props: ModuleSearchBarProps) {
   }, [query, select]);
 
   return (
-    <div className="flex flex-row gap-4 items-center">
+    <div className="flex flex-row gap-4 items-center mb-1">
       <span>Поиск </span>
       <Input value={query} onChange={(e) => setQuery(e.target.value)} className="max-w-xl" />
       <span>ПО:</span>

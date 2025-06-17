@@ -2,6 +2,7 @@ import { ModuleSearchBar } from '@/components/employees/FindEmployeesForm';
 import { ErrorComponent } from '@/components/errors/ErrorComponent';
 import { HeaderInfo } from '@/components/layout/HeaderInfo';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { formatPhone } from '@/lib/format.utils';
 import { getEmployees } from '@/server/actions/users/getEmployees';
 import Link from 'next/link';
 
@@ -42,7 +43,7 @@ export default async function UsersPage({ searchParams }: any) {
           {users.value.map((user) => (
             <TableRow key={user.id}>
               <TableCell className="font-medium">
-                <Link href={`/employees/${user.id}`}>{user.phone}</Link>
+                <Link href={`/employees/${user.id}`}>{formatPhone(user.phone)}</Link>
               </TableCell>
               <TableCell>
                 <Link href={`/employees/${user.id}`}>{user.fio}</Link>

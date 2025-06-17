@@ -1,9 +1,12 @@
-import { employee, position } from '@/entities';
+import { employee, part, position } from '@/entities';
+import { servicedStore } from '@/entities/servicedStore.entity';
 import { db } from '@/server/database';
 import chalk from 'chalk';
 import { sql } from 'drizzle-orm';
 
 const dropData = async () => {
+  await db.delete(servicedStore).where(sql`1 = 1`);
+  await db.delete(part).where(sql`1 = 1`);
   await db.delete(position).where(sql`1 = 1`);
   await db.delete(employee).where(sql`1 = 1`);
 };

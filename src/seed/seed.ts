@@ -4,17 +4,18 @@ import chalk from 'chalk';
 import { positionFixture } from './fixtures/fixture-position';
 import { employeeFixture } from './fixtures/fixture-employees';
 import { partsFixture } from './fixtures/fixture-parts';
+import { servicedStore } from '@/entities/servicedStore.entity';
+import { servicedStoreFixture } from './fixtures/fixture-stores';
 
 const seed = async () => {
   // Positions
-  await db.insert(position).values(positionFixture).execute();
-
+  await db.insert(position).values(positionFixture).onConflictDoNothing().execute();
   // Employees
-  await db.insert(employee).values(employeeFixture).execute();
-
+  await db.insert(employee).values(employeeFixture).onConflictDoNothing().execute();
   // Parts
-
-  await db.insert(part).values(partsFixture).execute();
+  await db.insert(part).values(partsFixture).onConflictDoNothing().execute();
+  // Serviced stores
+  await db.insert(servicedStore).values(servicedStoreFixture).onConflictDoNothing().execute();
 };
 
 seed()
