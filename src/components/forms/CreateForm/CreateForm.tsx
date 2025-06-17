@@ -81,7 +81,7 @@ export function ModularCreateForm({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="absolute right-12 bottom-12 gap-1 pr-4">
+        <Button className="absolute right-12 bottom-12 gap-1 pr-4 z-10">
           <Plus size={16} />
           {triggerLabel}
         </Button>

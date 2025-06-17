@@ -6,3 +6,4 @@ export * from './parts.entity';
 export * from './position.entity';
 export * from './repairedDevice.entity';
 export * from './repairedParts.entity';
+export * from './servicedStore.entity';

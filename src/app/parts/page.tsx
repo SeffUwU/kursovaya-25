@@ -1,5 +1,6 @@
 import { ModuleSearchBar } from '@/components/employees/FindEmployeesForm';
 import { ErrorComponent } from '@/components/errors/ErrorComponent';
+import { CreateRepairedPart } from '@/components/forms/CreateRepairedPartForm';
 import { HeaderInfo } from '@/components/layout/HeaderInfo';
 import { Input } from '@/components/ui/input';
 import {
@@ -35,6 +36,7 @@ export default async function UsersPage({ searchParams }: any) {
     <div className="p-4">
       <HeaderInfo title={'Список деталей'} type="part" />
       <ModuleSearchBar defaultFilter="name" filter={filters} />
+      <CreateRepairedPart />
       <Table>
         <TableHeader>
           <TableRow>
