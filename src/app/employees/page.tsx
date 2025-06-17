@@ -1,5 +1,6 @@
 import { ModuleSearchBar } from '@/components/employees/FindEmployeesForm';
 import { ErrorComponent } from '@/components/errors/ErrorComponent';
+import { CreateEmployeeForm } from '@/components/forms/CreateEmployeeForm';
 import { HeaderInfo } from '@/components/layout/HeaderInfo';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { formatPhone } from '@/lib/format.utils';
@@ -29,6 +30,7 @@ export default async function UsersPage({ searchParams }: any) {
     <div className="p-4">
       <HeaderInfo title={'Список сотрудников'} type="employee" />
       <ModuleSearchBar defaultFilter="position" filter={filters} />
+      <CreateEmployeeForm />
       <Table>
         <TableHeader>
           <TableRow>

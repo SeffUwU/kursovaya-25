@@ -12,6 +12,7 @@ import {
   ClipboardList,
   Cog,
   Computer,
+  FileText,
   House,
   Languages,
   Menu,
@@ -119,7 +120,17 @@ export function Sidebar() {
           >
             <Computer />
           </SideBarButton>
-
+          <SideBarButton
+            {...{
+              expanded,
+              className,
+              title: 'Заказы',
+              href: '/orders',
+              isActive: pathname.includes('orders'),
+            }}
+          >
+            <FileText />
+          </SideBarButton>
           <Separator orientation="horizontal" />
         </div>
         <div className="flex flex-col px-2 gap-2 w-full">
