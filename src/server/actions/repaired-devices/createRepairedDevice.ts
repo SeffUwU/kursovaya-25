@@ -1,6 +1,6 @@
 'use server';
 
-import { IPart, part } from '@/entities';
+import { IRepairedDevice, repairedDevice } from '@/entities';
 import { ServerActionError } from '@/helpers/errors/base.error';
 import { ServerActionResponse } from '@/helpers/responses/base.response';
 import { HttpStatusCode } from '@/helpers/responses/response.status';
@@ -9,29 +9,35 @@ import { db } from '@/server/database';
 import { ErrorCode } from '@/types/enums/error-code.enum';
 import { eq } from 'drizzle-orm';
 
-export async function createPart({
+export async function createRepairedDevice({
+  characteristics,
+  details,
+  manufacturer,
   name,
-  varchar,
-  price,
+  type,
 }: {
   name: string;
-  varchar: string;
-  price: number;
-}): ActionResponse<IPart> {
-  const foundStore = await db.query.part.findFirst({
-    where: eq(part.name, name),
+  type: string;
+  manufacturer: string;
+  characteristics: string;
+  details: string;
+}): ActionResponse<IRepairedDevice> {
+  const foundDevice = await db.query.repairedDevice.findFirst({
+    where: eq(repairedDevice.name, name),
   });
 
-  if (foundStore) {
+  if (foundDevice) {
     return ServerActionError(HttpStatusCode.Conflict, ErrorCode.AlreadyExists);
   }
 
   const [savedPart] = await db
-    .insert(part)
+    .insert(repairedDevice)
     .values({
+      characteristics,
+      details,
+      manufacturer,
       name,
-      varchar,
-      price,
+      type,
     })
     .returning();
 

@@ -7,4 +7,5 @@ export const RussianErrorMessages: Record<ErrorCode, string> = {
   [ErrorCode.EmployeeNotFound]: 'Пользователь не найден',
   [ErrorCode.InternalServerError]: 'Произошла серверная ошибка. Свяжитесь с НАМИ если это будет продолжаться.',
   [ErrorCode.PartNotFound]: 'Компонент не найден',
+  [ErrorCode.AlreadyExists]: 'Уже существует по названию',
 };

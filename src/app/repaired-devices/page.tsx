@@ -1,5 +1,6 @@
 import { ModuleSearchBar } from '@/components/employees/FindEmployeesForm';
 import { ErrorComponent } from '@/components/errors/ErrorComponent';
+import { CreateRepairedDeviceForm } from '@/components/forms/CreateRepairedDeviceForm';
 import { HeaderInfo } from '@/components/layout/HeaderInfo';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { getRepairedDevice } from '@/server/actions/repaired-devices/getRepairedDevices';
@@ -31,6 +32,7 @@ export default async function UsersPage({ searchParams }: any) {
     <div className="p-4">
       <HeaderInfo title={'Список сотрудников'} type="employee" />
       <ModuleSearchBar defaultFilter="position" filter={filters} />
+      <CreateRepairedDeviceForm />
       <Table>
         <TableHeader>
           <TableRow>

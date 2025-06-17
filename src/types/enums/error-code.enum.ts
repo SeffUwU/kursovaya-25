@@ -3,6 +3,7 @@ export enum ErrorCode {
   NotAuthorized = 'not_authorized',
   TokenExpired = 'token_expired',
   InternalServerError = 'internal_server_error',
+  AlreadyExists = 'already_exists',
   // Employee
   EmployeeNotFound = 'employee_not_found',
   // Parts
