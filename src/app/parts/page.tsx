@@ -1,18 +1,8 @@
 import { ModuleSearchBar } from '@/components/employees/FindEmployeesForm';
 import { ErrorComponent } from '@/components/errors/ErrorComponent';
-import { CreateRepairedPart } from '@/components/forms/CreateRepairedPartForm';
+import { CreateRepairedPart } from '@/components/forms/CreatePartForm';
 import { HeaderInfo } from '@/components/layout/HeaderInfo';
-import { Input } from '@/components/ui/input';
-import {
-  TableCaption,
-  TableHeader,
-  TableRow,
-  TableHead,
-  TableBody,
-  TableCell,
-  TableFooter,
-  Table,
-} from '@/components/ui/table';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { getParts } from '@/server/actions/parts/getParts';
 import Link from 'next/link';
 const filters = [
