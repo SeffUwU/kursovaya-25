@@ -3,7 +3,7 @@ import { relations } from 'drizzle-orm';
 import { index, timestamp, uuid, varchar } from 'drizzle-orm/pg-core';
 
 export const servicedStore = schema.table(
-  'serviced_stored',
+  'serviced_stores',
   {
     id: uuid().defaultRandom().primaryKey(),
     name: varchar().notNull(),

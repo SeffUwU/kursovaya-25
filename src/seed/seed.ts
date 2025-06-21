@@ -1,4 +1,4 @@
-import { employee, part, position, repairedDevice } from '@/entities';
+import { employee, malfunction, part, position, repairedDevice } from '@/entities';
 import { servicedStore } from '@/entities/servicedStore.entity';
 import { db } from '@/server/database';
 import chalk from 'chalk';
@@ -7,6 +7,7 @@ import { employeeFixture } from './fixtures/fixture-employees';
 import { partsFixture } from './fixtures/fixture-parts';
 import { positionFixture } from './fixtures/fixture-position';
 import { servicedStoreFixture } from './fixtures/fixture-stores';
+import { malfunctionFixture } from './fixtures/fixture-malfunctions';
 
 const seed = async () => {
   // Positions
@@ -19,6 +20,8 @@ const seed = async () => {
   await db.insert(servicedStore).values(servicedStoreFixture).onConflictDoNothing().execute();
   // Repaired Devices
   await db.insert(repairedDevice).values(repairedDevicesFixture).onConflictDoNothing().execute();
+  // Malfunctions
+  await db.insert(malfunction).values(malfunctionFixture).onConflictDoNothing().execute();
 };
 
 seed()

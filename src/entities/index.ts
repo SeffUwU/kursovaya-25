@@ -1,6 +1,6 @@
 export * from './schema';
 export * from './employee.entity';
-export * from './invoice.entity';
+export * from './malfunction.entity';
 export * from './order.entity';
 export * from './parts.entity';
 export * from './position.entity';

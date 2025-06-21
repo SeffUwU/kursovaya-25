@@ -1,12 +1,12 @@
 {
-  "id": "fcb2d784-1eac-4cf4-b66f-33477742d3ed",
+  "id": "518db841-b411-4c11-9aae-329c84ef2612",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "scSchema.employees": {
+    "service_center_schema.employees": {
       "name": "employees",
-      "schema": "scSchema",
+      "schema": "service_center_schema",
       "columns": {
         "id": {
           "name": "id",
@@ -94,7 +94,7 @@
           "name": "employees_positionId_positions_id_fk",
           "tableFrom": "employees",
           "tableTo": "positions",
-          "schemaTo": "scSchema",
+          "schemaTo": "service_center_schema",
           "columnsFrom": [
             "positionId"
           ],
@@ -111,9 +111,9 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "scSchema.invoices": {
-      "name": "invoices",
-      "schema": "scSchema",
+    "service_center_schema.malfunctions": {
+      "name": "malfunctions",
+      "schema": "service_center_schema",
       "columns": {
         "id": {
           "name": "id",
@@ -121,12 +121,6 @@
           "primaryKey": true,
           "notNull": true,
           "default": "gen_random_uuid()"
-        },
-        "repairedDeviceId": {
-          "name": "repairedDeviceId",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
         },
         "description": {
           "name": "description",
@@ -168,8 +162,8 @@
         }
       },
       "indexes": {
-        "invoice_id_pkey": {
-          "name": "invoice_id_pkey",
+        "malfunction_id_pkey": {
+          "name": "malfunction_id_pkey",
           "columns": [
             {
               "expression": "id",
@@ -184,31 +178,16 @@
           "with": {}
         }
       },
-      "foreignKeys": {
-        "invoices_repairedDeviceId_repaired_devices_id_fk": {
-          "name": "invoices_repairedDeviceId_repaired_devices_id_fk",
-          "tableFrom": "invoices",
-          "tableTo": "repaired_devices",
-          "schemaTo": "scSchema",
-          "columnsFrom": [
-            "repairedDeviceId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        }
-      },
+      "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "scSchema.orders": {
+    "service_center_schema.orders": {
       "name": "orders",
-      "schema": "scSchema",
+      "schema": "service_center_schema",
       "columns": {
         "id": {
           "name": "id",
@@ -217,9 +196,27 @@
           "notNull": true,
           "default": "gen_random_uuid()"
         },
-        "partId": {
-          "name": "partId",
-          "type": "uuid",
+        "orderDate": {
+          "name": "orderDate",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "returnDate": {
+          "name": "returnDate",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "customerFio": {
+          "name": "customerFio",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "serial": {
+          "name": "serial",
+          "type": "varchar",
           "primaryKey": false,
           "notNull": true
         },
@@ -229,17 +226,48 @@
           "primaryKey": false,
           "notNull": true
         },
-        "amount": {
-          "name": "amount",
+        "servicedStoreId": {
+          "name": "servicedStoreId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "guaranteeNote": {
+          "name": "guaranteeNote",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "guarantee_end_date": {
+          "name": "guarantee_end_date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "price": {
+          "name": "price",
           "type": "integer",
           "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
           "notNull": false,
-          "default": 1
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
         }
       },
       "indexes": {
-        "repaired_parts_id_pkey": {
-          "name": "repaired_parts_id_pkey",
+        "order_id_pkey": {
+          "name": "order_id_pkey",
           "columns": [
             {
               "expression": "id",
@@ -255,13 +283,13 @@
         }
       },
       "foreignKeys": {
-        "orders_partId_parts_id_fk": {
-          "name": "orders_partId_parts_id_fk",
+        "orders_malfunctionId_malfunctions_id_fk": {
+          "name": "orders_malfunctionId_malfunctions_id_fk",
           "tableFrom": "orders",
-          "tableTo": "parts",
-          "schemaTo": "scSchema",
+          "tableTo": "malfunctions",
+          "schemaTo": "service_center_schema",
           "columnsFrom": [
-            "partId"
+            "malfunctionId"
           ],
           "columnsTo": [
             "id"
@@ -269,13 +297,13 @@
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
-        "orders_malfunctionId_invoices_id_fk": {
-          "name": "orders_malfunctionId_invoices_id_fk",
+        "orders_servicedStoreId_serviced_stores_id_fk": {
+          "name": "orders_servicedStoreId_serviced_stores_id_fk",
           "tableFrom": "orders",
-          "tableTo": "invoices",
-          "schemaTo": "scSchema",
+          "tableTo": "serviced_stores",
+          "schemaTo": "service_center_schema",
           "columnsFrom": [
-            "malfunctionId"
+            "servicedStoreId"
           ],
           "columnsTo": [
             "id"
@@ -290,9 +318,9 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "scSchema.parts": {
+    "service_center_schema.parts": {
       "name": "parts",
-      "schema": "scSchema",
+      "schema": "service_center_schema",
       "columns": {
         "id": {
           "name": "id",
@@ -358,9 +386,9 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "scSchema.positions": {
+    "service_center_schema.positions": {
       "name": "positions",
-      "schema": "scSchema",
+      "schema": "service_center_schema",
       "columns": {
         "id": {
           "name": "id",
@@ -432,9 +460,9 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "scSchema.repaired_devices": {
+    "service_center_schema.repaired_devices": {
       "name": "repaired_devices",
-      "schema": "scSchema",
+      "schema": "service_center_schema",
       "columns": {
         "id": {
           "name": "id",
@@ -507,22 +535,98 @@
       },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {
-        "repaired_devices_type_unique": {
-          "name": "repaired_devices_type_unique",
-          "nullsNotDistinct": false,
-          "columns": [
-            "type"
-          ]
-        }
-      },
+      "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "scSchema.serviced_stored": {
-      "name": "serviced_stored",
-      "schema": "scSchema",
+    "service_center_schema.repaired_parts": {
+      "name": "repaired_parts",
+      "schema": "service_center_schema",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "partId": {
+          "name": "partId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "malfunctionId": {
+          "name": "malfunctionId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "amount": {
+          "name": "amount",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "default": 1
+        }
+      },
+      "indexes": {
+        "repaired_parts_id_pkey": {
+          "name": "repaired_parts_id_pkey",
+          "columns": [
+            {
+              "expression": "id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "repaired_parts_partId_parts_id_fk": {
+          "name": "repaired_parts_partId_parts_id_fk",
+          "tableFrom": "repaired_parts",
+          "tableTo": "parts",
+          "schemaTo": "service_center_schema",
+          "columnsFrom": [
+            "partId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "repaired_parts_malfunctionId_malfunctions_id_fk": {
+          "name": "repaired_parts_malfunctionId_malfunctions_id_fk",
+          "tableFrom": "repaired_parts",
+          "tableTo": "malfunctions",
+          "schemaTo": "service_center_schema",
+          "columnsFrom": [
+            "malfunctionId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "service_center_schema.serviced_stores": {
+      "name": "serviced_stores",
+      "schema": "service_center_schema",
       "columns": {
         "id": {
           "name": "id",
@@ -591,7 +695,7 @@
   },
   "enums": {},
   "schemas": {
-    "scSchema": "scSchema"
+    "service_center_schema": "service_center_schema"
   },
   "sequences": {},
   "roles": {},
