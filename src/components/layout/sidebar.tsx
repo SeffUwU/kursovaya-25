@@ -66,7 +66,7 @@ export function Sidebar() {
           </Link>
 
           <Separator orientation="horizontal" />
-          <SideBarButton
+          {/* <SideBarButton
             {...{
               expanded,
               className,
@@ -75,7 +75,7 @@ export function Sidebar() {
             }}
           >
             <House />
-          </SideBarButton>
+          </SideBarButton> */}
           <SideBarButton
             {...{
               expanded,

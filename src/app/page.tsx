@@ -1,3 +1,6 @@
+import { redirect } from 'next/navigation';
+
 export default function Home() {
-  return <div>Main page</div>;
+  redirect('/orders');
+  return <div>Загрузка..</div>;
 }
