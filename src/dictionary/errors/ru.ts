@@ -8,4 +8,5 @@ export const RussianErrorMessages: Record<ErrorCode, string> = {
   [ErrorCode.InternalServerError]: 'Произошла серверная ошибка. Свяжитесь с НАМИ если это будет продолжаться.',
   [ErrorCode.PartNotFound]: 'Компонент не найден',
   [ErrorCode.AlreadyExists]: 'Уже существует по названию',
+  [ErrorCode.NotFound]: 'Не найдено',
 };
