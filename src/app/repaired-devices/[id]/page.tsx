@@ -1,4 +1,6 @@
 import { ErrorComponent } from '@/components/errors/ErrorComponent';
+import { DeleteRepairedDeviceForm } from '@/components/forms/DeleteRepairedDeviceForm';
+import { UpdateRepairedDevice } from '@/components/forms/UpdateRepairedDeviceForm';
 import { HeaderInfo } from '@/components/layout/HeaderInfo';
 import { getRepairedDeviceById } from '@/server/actions/repaired-devices/getRepairedDevice';
 import { ErrorCode } from '@/types/enums/error-code.enum';
@@ -15,7 +17,8 @@ export default async function RepairedDevicePage({ params }: { params: { id: str
   return (
     <div className="p-4">
       <HeaderInfo title={device.name} description={`${device.manufacturer} - ${device.type}`} type="part" />
-
+      <UpdateRepairedDevice deviceId={device.id} initialData={device} />
+      <DeleteRepairedDeviceForm deviceId={device.id} deviceName={device.name} />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
         <div className=" p-4 rounded-lg shadow">
           <h3 className="text-lg font-semibold mb-4">Основная информация</h3>
