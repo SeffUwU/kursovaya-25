@@ -1,7 +1,14 @@
 import { ErrorComponent } from '@/components/errors/ErrorComponent';
+import { ConfirmDelete } from '@/components/forms/ConfirmDelete';
+import { DeleteEmployeeForm } from '@/components/forms/DeleteEmployeeForm';
+import { UpdateEmployeeForm } from '@/components/forms/UpdateEmployeeForm';
 import { HeaderInfo } from '@/components/layout/HeaderInfo';
+import { Button } from '@/components/ui/button';
+import { deleteEmployee } from '@/server/actions/users/deleteEmployee';
 import { getEmployeeInfo } from '@/server/actions/users/getEmployee';
 import { ErrorCode } from '@/types/enums/error-code.enum';
+import { error } from 'console';
+import { DeleteIcon, Trash2 } from 'lucide-react';
 
 export default async function UserPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -17,6 +24,17 @@ export default async function UserPage({ params }: { params: Promise<{ id: strin
   return (
     <div className="p-4">
       <HeaderInfo title={employee.fio} description={position.name} type="employee" />
+      <UpdateEmployeeForm
+        employeeId={employee.id}
+        initialData={{
+          address: employee.address,
+          fio: employee.fio,
+          passport: employee.passport,
+          phone: employee.phone,
+          positionId: employee.positionId,
+        }}
+      />
+      <DeleteEmployeeForm employeeId={employee.id} />
       <div>
         <h3 className="pt-4">Данные о сотруднике:</h3>
         <p>ФИО: {employee.fio}</p>

@@ -16,6 +16,10 @@ export interface ModularCreateFormProps {
   title?: string;
   triggerLabel?: string;
   onSubmit: () => void;
+  controlled?: {
+    open: boolean;
+    setOpen: (arg0: boolean) => void;
+  };
 }
 
 export function ModularForm({
@@ -25,6 +29,7 @@ export function ModularForm({
   title = 'Создать',
   triggerLabel = 'Создать',
   onSubmit,
+  controlled,
 }: ModularCreateFormProps) {
   const [open, setOpen] = useState(false);
 
@@ -79,13 +84,15 @@ export function ModularForm({
   };
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button className="absolute right-12 bottom-12 gap-1 pr-4 z-10">
-          <Plus size={16} />
-          {triggerLabel}
-        </Button>
-      </DialogTrigger>
+    <Dialog open={controlled?.open ?? open} onOpenChange={controlled?.setOpen ?? setOpen}>
+      {controlled ? null : (
+        <DialogTrigger asChild>
+          <Button className="absolute right-16 bottom-12 gap-1 pr-4 z-10">
+            <Plus size={16} />
+            {triggerLabel}
+          </Button>
+        </DialogTrigger>
+      )}
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
