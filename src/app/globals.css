@@ -81,7 +81,7 @@ body {
   }
 
   .content-padding {
-    @apply p-2
+    @apply p-2;
   }
 }
 
