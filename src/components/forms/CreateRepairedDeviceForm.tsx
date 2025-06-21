@@ -76,8 +76,8 @@ export function CreateRepairedDeviceForm() {
         fields={fields}
         formData={formData}
         onFormDataChange={setFormData}
-        title="Добавить ремонтируемую деталь"
-        triggerLabel="Новая деталь"
+        title="Добавить новую ремонтируемую модель"
+        triggerLabel="Новая модель"
         onSubmit={handleSubmit}
       />
       {loading && <p>Создание записи...</p>}
