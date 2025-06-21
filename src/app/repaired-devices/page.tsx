@@ -7,12 +7,14 @@ import { getRepairedDevice } from '@/server/actions/repaired-devices/getRepaired
 import { getStores } from '@/server/actions/stores/getStores';
 import Link from 'next/link';
 
-type Type = NonNullable<NonNullable<Parameters<typeof getStores>['0']>['type']>;
+type Type = NonNullable<NonNullable<Parameters<typeof getRepairedDevice>['0']>['type']>;
 
 const filters: { value: Type; name: string }[] = [
   { value: 'name', name: 'Наименование' },
-  { value: 'phone', name: 'Телефон' },
-  { value: 'address', name: 'Адрес' },
+  { value: 'type', name: 'Тип' },
+  { value: 'manufacturer', name: 'Производитель' },
+  { value: 'characteristics', name: 'Характеристики' },
+  { value: 'details', name: 'Детали' },
 ];
 
 export default async function UsersPage({ searchParams }: any) {
@@ -30,7 +32,7 @@ export default async function UsersPage({ searchParams }: any) {
 
   return (
     <div className="p-4">
-      <HeaderInfo title={'Список сотрудников'} type="employee" />
+      <HeaderInfo title={'Список моделей'} type="part" />
       <ModuleSearchBar defaultFilter="position" filter={filters} />
       <CreateRepairedDeviceForm />
       <Table>

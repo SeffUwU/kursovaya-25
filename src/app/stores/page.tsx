@@ -30,7 +30,7 @@ export default async function UsersPage({ searchParams }: any) {
 
   return (
     <div className="p-4">
-      <HeaderInfo title={'Список сотрудников'} type="employee" />
+      <HeaderInfo title={'Список магазинов'} type="store" />
       <ModuleSearchBar defaultFilter="name" filter={filters} />
       <CreateServicedStore />
       <Table>
@@ -45,13 +45,13 @@ export default async function UsersPage({ searchParams }: any) {
           {stores.value.map((store) => (
             <TableRow key={store.id}>
               <TableCell>
-                <Link href={`/store/${store.id}`}>{store.name}</Link>
+                <Link href={`/stores/${store.id}`}>{store.name}</Link>
               </TableCell>
               <TableCell className="font-medium">
-                <Link href={`/store/${store.id}`}>{formatPhone(store.phone)}</Link>
+                <Link href={`/stores/${store.id}`}>{formatPhone(store.phone)}</Link>
               </TableCell>
               <TableCell>
-                <Link href={`/store/${store.id}`}>{store.address}</Link>
+                <Link href={`/stores/${store.id}`}>{store.address}</Link>
               </TableCell>
             </TableRow>
           ))}

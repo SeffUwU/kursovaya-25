@@ -7,7 +7,7 @@ import { HttpStatusCode } from '@/helpers/responses/response.status';
 import { ActionResponse } from '@/helpers/responses/response.type';
 import { db } from '@/server/database';
 import { TokenPayload } from '@/types/jwt/token.payload.type';
-import { sql } from 'drizzle-orm';
+import { eq, sql } from 'drizzle-orm';
 
 /**
  * Get stores. With pagination. Self explanatory.
@@ -19,13 +19,18 @@ export const getStores = protect(
       page: 0,
       take: 200,
     },
+    id?: string,
   ): ActionResponse<IServicedStore[]> => {
     const query = db
       .select()
       .from(servicedStore)
       .offset(Math.max(options.page - 1, 0) * options.take)
       .limit(options.take);
-    console.log(options);
+
+    if (id) {
+      query.where(eq(servicedStore.id, id));
+    }
+
     if (options.query && options.type) {
       query.where(sql`${servicedStore[options.type]} ILIKE ${`%${options.query}%`}`);
     }

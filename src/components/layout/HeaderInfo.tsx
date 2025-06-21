@@ -4,6 +4,7 @@ import { House, Users, Bolt } from 'lucide-react';
 const typeToIconMap = {
   employee: Users,
   part: Bolt,
+  store: Bolt,
 };
 
 interface HeaderInfoProps {
