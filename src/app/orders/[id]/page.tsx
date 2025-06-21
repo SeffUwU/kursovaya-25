@@ -4,7 +4,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { getOrderById } from '@/server/actions/orders/getOrder';
 import { notFound } from 'next/navigation';
 
-export default async function OrderDetailPage({ params }: { params: { id: string } }) {
+export default async function OrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const orderResult = await getOrderById((await params).id);
 
   if (orderResult.is_error || !orderResult.value) {

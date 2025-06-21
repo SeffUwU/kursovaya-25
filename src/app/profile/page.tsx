@@ -4,9 +4,10 @@ import { ErrorComponent } from '@/components/errors/ErrorComponent';
 
 export default async function ProfilePage() {
   const response = await getMyId();
-
+  console.log(response);
   if (response.is_error) {
     return <ErrorComponent description="не смог подтянуть данные о текущем пользователе" />;
   }
+
   return <UserPage params={{ id: response.value } as any} />;
 }

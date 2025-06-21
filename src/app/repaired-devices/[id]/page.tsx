@@ -5,8 +5,8 @@ import { HeaderInfo } from '@/components/layout/HeaderInfo';
 import { getRepairedDeviceById } from '@/server/actions/repaired-devices/getRepairedDevice';
 import { ErrorCode } from '@/types/enums/error-code.enum';
 
-export default async function RepairedDevicePage({ params }: { params: { id: string } }) {
-  const deviceInfo = await getRepairedDeviceById(params.id);
+export default async function RepairedDevicePage({ params }: { params: Promise<{ id: string }> }) {
+  const deviceInfo = await getRepairedDeviceById((await params).id);
 
   if (deviceInfo.is_error) {
     return <ErrorComponent code={ErrorCode.NotFound} title="Устройство не найдено" />;
