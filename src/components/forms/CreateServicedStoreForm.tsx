@@ -2,8 +2,8 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { ModularFormField, ModularFormFieldType } from './CreateForm/create-form-types';
-import { ModularForm } from './CreateForm/ModularForm';
+import { ModularFormField, ModularFormFieldType } from './ModularForm/modular-form-types';
+import { ModularForm } from './ModularForm/ModularForm';
 import { createStore } from '@/server/actions/stores/createStore';
 
 export function CreateServicedStore() {

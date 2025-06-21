@@ -3,8 +3,8 @@
 import { signup } from '@/server/actions/auth/signup';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { DropdownValueType, ModularFormField, ModularFormFieldType } from './CreateForm/create-form-types';
-import { ModularForm } from './CreateForm/ModularForm';
+import { DropdownValueType, ModularFormField, ModularFormFieldType } from './ModularForm/modular-form-types';
+import { ModularForm } from './ModularForm/ModularForm';
 import { POSITION_IDS, PositionEnum } from '@/constants/positions';
 
 const positions: DropdownValueType[] = Object.values(PositionEnum).map((pos: PositionEnum) => ({

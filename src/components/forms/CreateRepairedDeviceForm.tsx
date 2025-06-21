@@ -1,7 +1,7 @@
 'use client';
 
-import { ModularFormField, ModularFormFieldType } from './CreateForm/create-form-types';
-import { ModularForm } from './CreateForm/ModularForm';
+import { ModularFormField, ModularFormFieldType } from './ModularForm/modular-form-types';
+import { ModularForm } from './ModularForm/ModularForm';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createRepairedDevice } from '@/server/actions/repaired-devices/createRepairedDevice';

@@ -1,6 +1,6 @@
 import { Label } from '@/components/ui/label';
 import { forwardRef } from 'react';
-import { DropdownValueType } from '../CreateForm/create-form-types';
+import { DropdownValueType } from '../ModularForm/modular-form-types';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 export interface DropdownFieldProps {

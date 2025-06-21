@@ -3,7 +3,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
-import { ModularFormField, ModularFormFieldType } from './create-form-types';
+import { ModularFormField, ModularFormFieldType } from './modular-form-types';
 import { FormEvent, useState } from 'react';
 import { TextField } from '../inputs/TextField';
 import { NumberField } from '../inputs/NumberField';
