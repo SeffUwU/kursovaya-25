@@ -1,4 +1,6 @@
 import { ErrorComponent } from '@/components/errors/ErrorComponent';
+import { DeletePartForm } from '@/components/forms/DeletePartForm';
+import { UpdateRepairedPart } from '@/components/forms/UpdatePartForm';
 import { HeaderInfo } from '@/components/layout/HeaderInfo';
 import { getPartInfo } from '@/server/actions/parts/getPart';
 import { ErrorCode } from '@/types/enums/error-code.enum';
@@ -16,6 +18,8 @@ export default async function UserPage({ params }: { params: Promise<{ id: strin
   return (
     <div className="p-4">
       <HeaderInfo title={part.name} description={part.varchar} type="part" />
+      <UpdateRepairedPart partId={part.id} initialData={part} />
+      <DeletePartForm partId={part.id} partName={part.name} />
       <div>
         <h3 className="pt-4">Данные о деталях:</h3>
         <p>ID: {part.id}</p>

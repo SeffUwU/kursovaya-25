@@ -8,4 +8,5 @@ export enum ErrorCode {
   EmployeeNotFound = 'employee_not_found',
   // Parts
   PartNotFound = 'part_not_found',
+  NotFound = 'not_found',
 }
