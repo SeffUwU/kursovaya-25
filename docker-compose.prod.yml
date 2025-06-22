@@ -15,17 +15,24 @@ services:
       - pgdata:/var/lib/postgresql/data
     env_file:
       - .env
+    networks:
+      - default
   app:
     build:
       context: .
       target: production
     restart: unless-stopped
     ports:
-      - '3000:3000'
+      - '3018:3000'
     depends_on:
       - service_db
     env_file:
       - .env
+    networks:
+      - default
 
 volumes:
   pgdata:
+networks:
+  default:
+    name: nginx
