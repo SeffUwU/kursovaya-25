@@ -26,15 +26,16 @@ export const order = schema.table(
     updatedAt: timestamp('updated_at')
       .defaultNow()
       .$onUpdateFn(() => new Date()),
-    employeeId: uuid(),
+    employeeId: uuid().references(() => employee.id, { onDelete: 'cascade' }),
   },
   (t) => [index('order_id_pkey').on(t.id)],
 );
 
-export const orderRelations = relations(order, ({ one }) => ({
+export const orderRelations = relations(order, ({ one, many }) => ({
   malfunction: one(malfunction, { fields: [order.malfunctionId], references: [malfunction.id] }),
   servicedStore: one(servicedStore, { fields: [order.servicedStoreId], references: [servicedStore.id] }),
   employee: one(employee, { fields: [order.employeeId], references: [employee.id] }),
+  orders: many(order),
 }));
 
 export type IOrder = typeof order.$inferSelect;
