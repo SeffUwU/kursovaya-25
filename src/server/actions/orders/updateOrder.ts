@@ -36,7 +36,6 @@ export async function updateOrder({
   if (!existingOrder) {
     return ServerActionError(HttpStatusCode.NotFound, ErrorCode.NotFound);
   }
-  console.log(price);
   // Обновляем заказ
   await db
     .update(order)

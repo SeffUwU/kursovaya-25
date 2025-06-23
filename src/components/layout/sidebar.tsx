@@ -70,16 +70,16 @@ export function Sidebar() {
           </Link>
 
           <Separator orientation="horizontal" />
-          {/* <SideBarButton
+          <SideBarButton
             {...{
               expanded,
               className,
-              title: 'Главная',
+              title: 'Дешборд',
               isActive: pathname === '/',
             }}
           >
             <House />
-          </SideBarButton> */}
+          </SideBarButton>
           <SideBarButton
             {...{
               expanded,

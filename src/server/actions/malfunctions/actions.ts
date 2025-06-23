@@ -23,7 +23,6 @@ export async function createMalfunction({
   repairMethod: string;
   price: number;
 }): ActionResponse<IMalfunction> {
-  // Verify repaired device exists
   const existingDevice = await db.query.repairedDevice.findFirst({
     where: eq(repairedDevice.id, repairedDeviceId),
   });
