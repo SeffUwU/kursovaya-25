@@ -3,6 +3,7 @@ import { relations, sql } from 'drizzle-orm';
 import { index, integer, timestamp, uuid, varchar } from 'drizzle-orm/pg-core';
 import { malfunction } from './malfunction.entity';
 import { servicedStore } from './servicedStore.entity';
+import { employee } from './employee.entity';
 
 export const order = schema.table(
   'orders',
@@ -25,6 +26,7 @@ export const order = schema.table(
     updatedAt: timestamp('updated_at')
       .defaultNow()
       .$onUpdateFn(() => new Date()),
+    employeeId: uuid(),
   },
   (t) => [index('order_id_pkey').on(t.id)],
 );
@@ -32,6 +34,7 @@ export const order = schema.table(
 export const orderRelations = relations(order, ({ one }) => ({
   malfunction: one(malfunction, { fields: [order.malfunctionId], references: [malfunction.id] }),
   servicedStore: one(servicedStore, { fields: [order.servicedStoreId], references: [servicedStore.id] }),
+  employee: one(employee, { fields: [order.employeeId], references: [employee.id] }),
 }));
 
 export type IOrder = typeof order.$inferSelect;
